@@ -14,9 +14,9 @@ RUN apt-get install -y vim \
 		libreadline6-dev \
 		zlib1g-dev
 ENV pginst /usr/local/src/postgresql-9.6.2
-COPY ./postgresql-9.6.2.tar /usr/local/src
+COPY https://ftp.postgresql.org/pub/source/v9.6.2/postgresql-9.6.2.tar.gz /usr/local/src
 WORKDIR /usr/local/src
-RUN tar -xf /usr/local/src/postgresql-9.6.2.tar
+RUN tar -zxf /usr/local/src/postgresql-9.6.2.tar.gz
 WORKDIR ${pginst}
 RUN ./configure --prefix=/usr/local/pgsql9.6.2
 RUN make
