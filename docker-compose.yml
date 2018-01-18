@@ -1,0 +1,11 @@
+version: "2"
+services:
+    pg_projeto:
+        image: projetofinal:v1
+        restart: always
+        stdin_open: true
+        tty: true
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./datadb:/data/db
