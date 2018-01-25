@@ -1,7 +1,7 @@
 version: "2"
 services:
     pg_projeto:
-        image: projetofinal:v1
+        image: projetofinalmaster:v1
         restart: always
         stdin_open: true
         tty: true
@@ -9,3 +9,15 @@ services:
             - "5432:5432"
         volumes:
             - ./datadb:/data/db
+            - ./databkp:/data/backup
+    pg_slave:
+        image: projetofinalslave:v1
+        restart: always
+        stdin_open: true
+        tty: true
+        ports: 
+            - "15432:5432"            
+        volumes: 
+            - ./databkp:/data/backup
+            - ./dataslv:/data/db
+
